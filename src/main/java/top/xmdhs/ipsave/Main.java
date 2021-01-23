@@ -26,11 +26,11 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         that = this;
-        that.getLogger().info("start");
-        this.saveDefaultConfig();
+        getLogger().info("start");
+        saveDefaultConfig();
 
         try {
-            s = new sqlite();
+            s = new sqlite(Main.getInstance().getDataFolder().getPath());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             return;

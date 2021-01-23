@@ -2,7 +2,6 @@ package top.xmdhs.ipsave.sql;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import top.xmdhs.ipsave.Main;
 
 import javax.sql.DataSource;
 import java.io.File;
@@ -12,10 +11,11 @@ import java.util.Set;
 
 public class sqlite implements sql {
     private final DataSource ds;
+    private final String path;
 
-    public sqlite() throws SQLException {
+    public sqlite(String path) throws SQLException {
         HikariConfig config = new HikariConfig();
-        String path = Main.getInstance().getDataFolder().getPath();
+        this.path = path;
         config.setJdbcUrl("jdbc:sqlite:" + path + File.separator + "sql.db");
         config.addDataSourceProperty("connectionTimeout", "1000");
         config.addDataSourceProperty("idleTimeout", "60000");

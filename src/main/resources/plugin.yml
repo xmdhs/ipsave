@@ -3,7 +3,7 @@ main: top.xmdhs.ipsave.Main
 api-version: 1.13
 version: 0.0.1
 author: xmdhs
-softdepend: [AuthMe]
+softdepend: [ AuthMe ]
 commands:
   ipsave:
     description: 查看此玩家可能的小号

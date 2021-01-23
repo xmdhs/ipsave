@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import top.xmdhs.ipsave.sql.GetNames;
 import top.xmdhs.ipsave.sql.sql;
 
 import java.sql.SQLException;
@@ -31,32 +32,7 @@ public class Commands implements CommandExecutor {
             return false;
         }
         String name = strings[0];
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
-            Set<String> ips = null;
-            try {
-                ips = sql.getByUUID(name);
-            } catch (SQLException throwables) {
-                commandSender.sendMessage("数据库读取出错");
-                throwables.printStackTrace();
-                return;
-            }
-            if (ips == null){
-                commandSender.sendMessage("找不到这个玩家的任何记录");
-                return;
-            }
-            try {
-                for (String v : ips) {
-                    Set<String> names = sql.getByIp(v);
-                    commandSender.sendMessage(v + " 有以下玩家");
-                    for (String n : names) {
-                        commandSender.sendMessage(n);
-                    }
-                }
-                commandSender.sendMessage("查询完毕");
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new GetNames(name, commandSender::sendMessage,sql));
         return true;
     }
 }
