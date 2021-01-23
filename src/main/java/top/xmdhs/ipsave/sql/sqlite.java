@@ -98,7 +98,7 @@ public class sqlite implements sql {
                     c.commit();
                 }
             } catch (SQLException e) {
-                try (PreparedStatement ps = c.prepareStatement("UPDATE " + table + " SET JSON = ? WHERE ID = ?);")) {
+                try (PreparedStatement ps = c.prepareStatement("UPDATE " + table + " SET JSON = ? WHERE ID = ?;")) {
                     c.setAutoCommit(false);
                     ps.setObject(1, v2);
                     ps.setObject(2, v1);
