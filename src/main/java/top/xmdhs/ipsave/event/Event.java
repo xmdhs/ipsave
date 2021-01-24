@@ -26,14 +26,13 @@ public class Event implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerJoinEvent e) {
         String[] list = getnameip(e.getPlayer());
-        if (list == null){
+        if (list == null) {
             return;
         }
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
             Join.join(list[0], list[1], s, p);
         });
     }
-
 
     static String[] getnameip(Player p) {
         String name = p.getName();
@@ -43,7 +42,6 @@ public class Event implements Listener {
             return null;
         }
         String ip = i.getAddress().getHostAddress();
-        return new String[]{name, ip};
+        return new String[] { name, ip };
     }
 }
-

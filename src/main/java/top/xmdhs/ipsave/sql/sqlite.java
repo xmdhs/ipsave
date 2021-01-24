@@ -11,11 +11,9 @@ import java.util.Set;
 
 public class sqlite implements sql {
     private final DataSource ds;
-    private final String path;
-
+    
     public sqlite(String path) throws SQLException {
         HikariConfig config = new HikariConfig();
-        this.path = path;
         config.setJdbcUrl("jdbc:sqlite:" + path + File.separator + "sql.db");
         config.addDataSourceProperty("connectionTimeout", "1000");
         config.addDataSourceProperty("idleTimeout", "60000");
@@ -30,7 +28,6 @@ public class sqlite implements sql {
             }
         }
     }
-
 
     @Override
     public void add(String uuid, String ip) throws SQLException {

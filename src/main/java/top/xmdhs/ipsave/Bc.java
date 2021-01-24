@@ -16,7 +16,6 @@ import top.xmdhs.ipsave.sql.sqlite;
 
 import java.net.InetSocketAddress;
 import java.sql.SQLException;
-import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -46,7 +45,7 @@ public class Bc extends Plugin implements Listener {
         String name = c.getName();
         exec.execute(() -> {
             InetSocketAddress i = (InetSocketAddress) c.getSocketAddress();
-            Join.join(name,i.getAddress().getHostAddress(),s,(msg) ->{
+            Join.join(name, i.getAddress().getHostAddress(), s, (msg) -> {
                 getLogger().warning(msg);
             });
         });
@@ -77,8 +76,8 @@ class commd extends Command {
             return;
         }
         String name = strings[0];
-        exec.execute(new GetNames(name,(msg)->{
+        exec.execute(new GetNames(name, (msg) -> {
             commandSender.sendMessage(new TextComponent(msg));
-        },s));
+        }, s));
     }
 }

@@ -2,13 +2,10 @@ package top.xmdhs.ipsave.event;
 
 import fr.xephi.authme.events.LoginEvent;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import top.xmdhs.ipsave.Main;
 import top.xmdhs.ipsave.sql.sql;
-
-import java.net.InetSocketAddress;
 
 public class EventAuthme implements Listener {
     private final sql s;
@@ -26,7 +23,7 @@ public class EventAuthme implements Listener {
     @EventHandler
     public void onPlayerMove(LoginEvent e) {
         String[] list = Event.getnameip(e.getPlayer());
-        if (list == null){
+        if (list == null) {
             return;
         }
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {

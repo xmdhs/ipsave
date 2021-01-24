@@ -8,9 +8,6 @@ import org.bukkit.entity.Player;
 import top.xmdhs.ipsave.sql.GetNames;
 import top.xmdhs.ipsave.sql.sql;
 
-import java.sql.SQLException;
-import java.util.Set;
-
 public class Commands implements CommandExecutor {
     private final sql sql;
 
@@ -32,7 +29,8 @@ public class Commands implements CommandExecutor {
             return false;
         }
         String name = strings[0];
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new GetNames(name, commandSender::sendMessage,sql));
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(),
+                new GetNames(name, commandSender::sendMessage, sql));
         return true;
     }
 }

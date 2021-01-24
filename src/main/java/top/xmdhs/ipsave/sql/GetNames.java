@@ -5,19 +5,19 @@ import top.xmdhs.ipsave.event.print;
 import java.sql.SQLException;
 import java.util.Set;
 
-public class GetNames implements Runnable{
+public class GetNames implements Runnable {
     private final String name;
     private final print p;
     private final sql s;
 
-    public GetNames(String name, print p, sql s){
+    public GetNames(String name, print p, sql s) {
         this.name = name;
         this.p = p;
         this.s = s;
     }
 
     @Override
-    public void run(){
+    public void run() {
         Set<String> ips;
         try {
             ips = s.getByUUID(name);

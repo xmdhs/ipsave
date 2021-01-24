@@ -17,7 +17,6 @@ import org.spongepowered.api.network.PlayerConnection;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.scheduler.Task;
 import org.spongepowered.api.text.Text;
-import top.xmdhs.ipsave.event.Event;
 import top.xmdhs.ipsave.event.Join;
 import top.xmdhs.ipsave.sql.GetNames;
 import top.xmdhs.ipsave.sql.sql;
